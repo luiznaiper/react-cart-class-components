@@ -1,10 +1,12 @@
 import { Component, ReactNode } from 'react';
 import Product from '../Product';
 
+type flexDirection = 'row' | 'column';
+
 interface stylesInline {
   products: {
     display: string;
-    flexDirection: string;
+    flexDirection: flexDirection;
     justifyContent: string;
   };
 }

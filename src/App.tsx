@@ -1,5 +1,8 @@
 import { Component, ReactNode } from 'react';
 import Products from './components/Products';
+import Layout from './components/Layout';
+import Title from './components/Title';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   state = {
@@ -12,10 +15,14 @@ class App extends Component {
   render(): ReactNode {
     return (
       <div>
-        <Products
-          addToCart={() => console.log('Nothing happens')}
-          products={this.state.products}
-        />
+        <Navbar />
+        <Layout>
+          <Title />
+          <Products
+            addToCart={() => console.log('Nothing happens')}
+            products={this.state.products}
+          />
+        </Layout>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { Component, ReactNode } from 'react';
+import Button from './components/Button';
 
 interface stylesInline {
   product: {
@@ -28,12 +29,13 @@ const styles: stylesInline = {
 
 class Product extends Component {
   render(): ReactNode {
-    const { product } = this.props;
+    const { product, addToCart } = this.props;
     return (
       <div style={styles.product}>
         <img alt={product.name} src={product.img} />
         <h3>{product.name}</h3>
         <p>{product.price}</p>
+        <Button onClick={() => addToCart(product)}>Add to Cart</Button>
       </div>
     );
   }
