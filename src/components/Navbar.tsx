@@ -1,4 +1,6 @@
 import { Component, ReactNode } from 'react';
+import Logo from './Logo';
+import Cart from './Cart';
 
 type flexDirection = 'row' | 'column';
 
@@ -32,8 +34,8 @@ class Navbar extends Component {
   render(): ReactNode {
     return (
       <nav style={styles.navbar}>
-        <p>Logo</p>
-        <p>Cart</p>
+        <Logo />
+        <Cart />
       </nav>
     );
   }
