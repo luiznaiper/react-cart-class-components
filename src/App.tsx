@@ -11,14 +11,8 @@ class App extends Component {
       { name: 'Arbejas', price: 2500, img: '../public/products/arbejas.jpeg' },
       { name: 'Lettuce', price: 500, img: '../public/products/lettuce.jpeg' },
     ],
-    cart: [
-      // {
-      //   name: 'Tomato',
-      //   price: 1500,
-      //   img: '../public/products/tomato.jpeg',
-      //   quantity: 1,
-      // },
-    ],
+    cart: [],
+    isCartVisible: false,
   };
 
   addToCart = (product) => {
@@ -39,12 +33,22 @@ class App extends Component {
     });
   };
 
-  render(): ReactNode {
-    console.log(this.state.cart);
+  showCart = () => {
+    if (!this.state.cart.length) {
+      return;
+    }
+    this.setState({ isCartVisible: !this.state.isCartVisible });
+  };
 
+  render(): ReactNode {
+    const { isCartVisible } = this.state;
     return (
       <div>
-        <Navbar />
+        <Navbar
+          cart={this.state.cart}
+          isCartVisible={isCartVisible}
+          showCart={this.showCart}
+        />
         <Layout>
           <Title />
           <Products addToCart={this.addToCart} products={this.state.products} />

@@ -32,10 +32,11 @@ const styles: stylesInline = {
 
 class Navbar extends Component {
   render(): ReactNode {
+    const { cart, isCartVisible, showCart } = this.props;
     return (
       <nav style={styles.navbar}>
         <Logo />
-        <Cart />
+        <Cart cart={cart} isCartVisible={isCartVisible} showCart={showCart} />
       </nav>
     );
   }

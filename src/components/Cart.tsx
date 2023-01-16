@@ -1,5 +1,6 @@
 import { Component, ReactNode } from 'react';
 import BubbleAlert from './BubbleAlert';
+import CartDetails from './CartDetails';
 
 type position = 'relative' | 'absolute';
 
@@ -37,12 +38,17 @@ const styles: stylesInline = {
 
 class Cart extends Component {
   render(): ReactNode {
+    const { cart, isCartVisible, showCart } = this.props;
+    const quantity = cart.reduce((acc, el) => acc + el.quantity, 0);
     return (
       <div>
         <span style={styles.bubble}>
-          <BubbleAlert value={5} />
+          {quantity !== 0 ? <BubbleAlert value={quantity} /> : null}
         </span>
-        <button style={styles.cart}>Cart</button>
+        <button onClick={showCart} style={styles.cart}>
+          Cart
+        </button>
+        {isCartVisible ? <CartDetails cart={cart} /> : null}
       </div>
     );
   }
